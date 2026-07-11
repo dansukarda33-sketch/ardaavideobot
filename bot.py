@@ -6,7 +6,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, MessageHandler, filters
 
 
-TOKEN = '8355170336:AAFm-ZNziE2JCbwGJTcMDNIuTZJ2OVIyWXQ '
+TOKEN = '8355170336:AAFm-ZNziE2JCbwGJTcMDNIuTZJ2OVIyWXQ'
 
 # Flask ile "uykuya dalmama" (keep-alive) mekanizması
 app = Flask('')
@@ -24,7 +24,7 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     url = update.message.text
     
     # Desteklenen siteler
-    supported_sites = ["twitter.com", "x.com", "facebook.com", "instagram.com", "youtube.com", "youtu.be"]
+    supported_sites = ["twitter.com", "x.com", "facebook.com", "instagram.com", "youtube.com", "youtu.be", "tiktok.com"]
     if not any(site in url for site in supported_sites):
         return
 
