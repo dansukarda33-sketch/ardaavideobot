@@ -75,7 +75,6 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return "Bot aktif!"
-
 if __name__ == '__main__':
     # Flask'ı başlat
     port = int(os.environ.get("PORT", 10000))
