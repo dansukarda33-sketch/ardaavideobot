@@ -31,13 +31,15 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     status_msg = await update.message.reply_text("Video işleniyor, lütfen bekle...")
     
     # yt-dlp seçenekleri
-        ydl_opts = {
+            ydl_opts = {
         'format': 'best',
         'outtmpl': 'video.mp4',
         'noplaylist': True,
         'socket_timeout': 30,
         'retries': 5,
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
     }
+
 
     
     try:
