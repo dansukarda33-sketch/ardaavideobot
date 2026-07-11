@@ -31,11 +31,14 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     status_msg = await update.message.reply_text("Video işleniyor, lütfen bekle...")
     
     # yt-dlp seçenekleri
-    ydl_opts = {
+        ydl_opts = {
         'format': 'best',
         'outtmpl': 'video.mp4',
         'noplaylist': True,
+        'socket_timeout': 30,
+        'retries': 5,
     }
+
     
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
