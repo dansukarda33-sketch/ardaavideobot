@@ -59,8 +59,22 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if os.path.exists('video.mp4'):
             os.remove('video.mp4')
 
+# Flask sunucusu (Render'ın botu uyutmaması için)
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot aktif!"
+
+def run_flask():
+    app.run(host='0.0.0.0', port=10000)
+
 if __name__ == '__main__':
-    # Bot kurulumu
+    # Flask'ı arka planda bir thread olarak başlat
+    t = Thread(target=run_flask)
+    t.start()
+
+    # Botu başlat
     app_bot = ApplicationBuilder().token(TOKEN).build()
     app_bot.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), download_video))
     
