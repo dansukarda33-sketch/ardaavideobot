@@ -69,10 +69,17 @@ def home():
 def run_flask():
     app.run(host='0.0.0.0', port=10000)
 
+# Flask sunucusu
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot aktif!"
+
 if __name__ == '__main__':
-    # Flask'ı arka planda bir thread olarak başlat
-    t = Thread(target=run_flask)
-    t.start()
+    # Flask'ı başlat
+    port = int(os.environ.get("PORT", 10000))
+    Thread(target=lambda: app.run(host='0.0.0.0', port=port)).start()
 
     # Botu başlat
     app_bot = ApplicationBuilder().token(TOKEN).build()
