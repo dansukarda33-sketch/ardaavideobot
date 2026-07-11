@@ -5,6 +5,20 @@ from threading import Thread
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, MessageHandler, filters
 
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot aktif, her şey yolunda!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+
 
 TOKEN = '8355170336:AAFm-ZNziE2JCbwGJTcMDNIuTZJ2OVIyWXQ'
 
